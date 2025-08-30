@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T08ThornmarchH;
+﻿namespace BossMod.RealmReborn.Trial.T14ThornmarchH;
 
 class PomStone(BossModule module) : Components.GenericAOEs(module)
 {

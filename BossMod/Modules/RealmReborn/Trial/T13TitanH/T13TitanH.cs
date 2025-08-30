@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T07TitanH;
+﻿namespace BossMod.RealmReborn.Trial.T13TitanH;
 
 public enum OID : uint
 {
@@ -34,7 +34,7 @@ class Hints(BossModule module) : BossComponent(module)
 
     public override void AddGlobalHints(GlobalHints hints)
     {
-        var heartExists = ((T07TitanH)Module).ActiveHeart.Any();
+        var heartExists = ((T13TitanH)Module).ActiveHeart.Any();
         if (_heartSpawn == default && heartExists)
         {
             _heartSpawn = WorldState.CurrentTime;
@@ -106,9 +106,9 @@ class Burst(BossModule module) : Components.StandardAOEs(module, AID.Burst, new 
     }
 }
 
-class T07TitanHStates : StateMachineBuilder
+class T13TitanHStates : StateMachineBuilder
 {
-    public T07TitanHStates(BossModule module) : base(module)
+    public T13TitanHStates(BossModule module) : base(module)
     {
         TrivialPhase()
             .ActivateOnEnter<Hints>()
@@ -121,12 +121,12 @@ class T07TitanHStates : StateMachineBuilder
 }
 
 [ModuleInfo(BossModuleInfo.Maturity.Verified, GroupType = BossModuleInfo.GroupType.CFC, GroupID = 60, NameID = 1801)]
-public class T07TitanH : BossModule
+public class T13TitanH : BossModule
 {
     private readonly IReadOnlyList<Actor> _heart;
     public IEnumerable<Actor> ActiveHeart => _heart.Where(h => h.IsTargetable && !h.IsDead);
 
-    public T07TitanH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(25))
+    public T13TitanH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(25))
     {
         _heart = Enemies(OID.TitansHeart);
     }

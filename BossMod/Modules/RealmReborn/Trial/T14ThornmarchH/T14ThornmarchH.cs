@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T08ThornmarchH;
+﻿namespace BossMod.RealmReborn.Trial.T14ThornmarchH;
 
 public enum OID : uint
 {
@@ -76,9 +76,9 @@ class MogComet(BossModule module) : Components.StandardAOEs(module, AID.MogComet
 class MogCreation(BossModule module) : Components.StandardAOEs(module, AID.MogCreation, new AOEShapeRect(50, 5));
 
 // note: this fight has well-timed state machine for all phases, but it's just too simple to bother...
-class T08ThornmarchHStates : StateMachineBuilder
+class T14ThornmarchHStates : StateMachineBuilder
 {
-    public T08ThornmarchHStates(BossModule module) : base(module)
+    public T14ThornmarchHStates(BossModule module) : base(module)
     {
         SimplePhase(0, id => { SimpleState(id, 10000, "Enrage"); }, "Single phase")
             .ActivateOnEnter<SpinningMogshield>()
@@ -103,7 +103,7 @@ class T08ThornmarchHStates : StateMachineBuilder
 }
 
 [ModuleInfo(BossModuleInfo.Maturity.Verified, PrimaryActorOID = (uint)OID.WhiskerwallKupdiKoop, GroupType = BossModuleInfo.GroupType.CFC, GroupID = 66, NameID = 725)]
-public class T08ThornmarchH(WorldState ws, Actor primary) : BossModule(ws, primary, new(0, 0), new ArenaBoundsCircle(21))
+public class T14ThornmarchH(WorldState ws, Actor primary) : BossModule(ws, primary, new(0, 0), new ArenaBoundsCircle(21))
 {
     protected override void DrawEnemies(int pcSlot, Actor pc)
     {

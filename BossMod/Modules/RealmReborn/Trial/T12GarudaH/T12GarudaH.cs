@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T06GarudaH;
+﻿namespace BossMod.RealmReborn.Trial.T12GarudaH;
 
 public enum OID : uint
 {
@@ -44,7 +44,7 @@ class Friction(BossModule module) : BossComponent(module)
     public override void AddAIHints(int slot, Actor actor, PartyRolesConfig.Assignment assignment, AIHints hints)
     {
         if (Module.PrimaryActor.CastInfo == null) // don't forbid standing near monoliths while boss is casting to allow avoiding aoes
-            foreach (var m in ((T06GarudaH)Module).ActiveMonoliths)
+            foreach (var m in ((T12GarudaH)Module).ActiveMonoliths)
                 hints.AddForbiddenZone(ShapeContains.Circle(m.Position, 5));
     }
 }
@@ -54,21 +54,21 @@ class Slipstream(BossModule module) : Components.StandardAOEs(module, AID.Slipst
 
 class MistralShriek(BossModule module) : Components.CastLineOfSightAOE(module, AID.MistralShriek, 24.7f, true)
 {
-    public override IEnumerable<Actor> BlockerActors() => ((T06GarudaH)Module).ActiveMonoliths;
+    public override IEnumerable<Actor> BlockerActors() => ((T12GarudaH)Module).ActiveMonoliths;
 }
 
 class MistralSong(BossModule module) : Components.CastLineOfSightAOE(module, AID.MistralSong, 31.7f, true)
 {
-    public override IEnumerable<Actor> BlockerActors() => ((T06GarudaH)Module).ActiveMonoliths;
+    public override IEnumerable<Actor> BlockerActors() => ((T12GarudaH)Module).ActiveMonoliths;
 }
 
 class AerialBlast(BossModule module) : Components.RaidwideCast(module, AID.AerialBlast);
 class GreatWhirlwind(BossModule module) : Components.StandardAOEs(module, AID.GreatWhirlwind, 8);
 class EyeOfTheStorm(BossModule module) : Components.StandardAOEs(module, AID.EyeOfTheStorm, new AOEShapeDonut(12, 25));
 
-class T06GarudaHStates : StateMachineBuilder
+class T12GarudaHStates : StateMachineBuilder
 {
-    public T06GarudaHStates(BossModule module) : base(module)
+    public T12GarudaHStates(BossModule module) : base(module)
     {
         TrivialPhase()
             .ActivateOnEnter<Friction>()
@@ -83,12 +83,12 @@ class T06GarudaHStates : StateMachineBuilder
 }
 
 [ModuleInfo(BossModuleInfo.Maturity.Verified, GroupType = BossModuleInfo.GroupType.CFC, GroupID = 61, NameID = 1644)]
-public class T06GarudaH : BossModule
+public class T12GarudaH : BossModule
 {
     private readonly IReadOnlyList<Actor> _monoliths;
     public IEnumerable<Actor> ActiveMonoliths => _monoliths;
 
-    public T06GarudaH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(22))
+    public T12GarudaH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(22))
     {
         _monoliths = Enemies(OID.Monolith);
     }

@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T05IfritH;
+﻿namespace BossMod.RealmReborn.Trial.T11IfritH;
 
 public enum OID : uint
 {
@@ -27,7 +27,7 @@ class Hints(BossModule module) : BossComponent(module)
 
     public override void AddGlobalHints(GlobalHints hints)
     {
-        bool nailsActive = ((T05IfritH)Module).ActiveNails.Any();
+        bool nailsActive = ((T11IfritH)Module).ActiveNails.Any();
         if (_nailSpawn == default && nailsActive)
         {
             _nailSpawn = WorldState.CurrentTime;
@@ -68,9 +68,9 @@ class CrimsonCyclone(BossModule module) : Components.GenericAOEs(module, AID.Cri
 
 class RadiantPlume(BossModule module) : Components.StandardAOEs(module, AID.RadiantPlumeAOE, 8);
 
-class T05IfritHStates : StateMachineBuilder
+class T11IfritHStates : StateMachineBuilder
 {
-    public T05IfritHStates(BossModule module) : base(module)
+    public T11IfritHStates(BossModule module) : base(module)
     {
         TrivialPhase()
             .ActivateOnEnter<Hints>()
@@ -82,12 +82,12 @@ class T05IfritHStates : StateMachineBuilder
 }
 
 [ModuleInfo(BossModuleInfo.Maturity.Verified, GroupType = BossModuleInfo.GroupType.CFC, GroupID = 59, NameID = 1185)]
-public class T05IfritH : BossModule
+public class T11IfritH : BossModule
 {
     private readonly IReadOnlyList<Actor> _nails;
     public IEnumerable<Actor> ActiveNails => _nails.Where(n => n.IsTargetable && !n.IsDead);
 
-    public T05IfritH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(20))
+    public T11IfritH(WorldState ws, Actor primary) : base(ws, primary, new(0, 0), new ArenaBoundsCircle(20))
     {
         _nails = Enemies(OID.InfernalNail);
     }

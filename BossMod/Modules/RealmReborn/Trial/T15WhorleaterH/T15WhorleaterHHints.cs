@@ -1,4 +1,4 @@
-namespace BossMod.RealmReborn.Trial.T09WhorleaterH;
+namespace BossMod.RealmReborn.Trial.T15WhorleaterH;
 
 class Hints(BossModule module) : BossComponent(module)
 {

@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T08ThornmarchH;
+﻿namespace BossMod.RealmReborn.Trial.T14ThornmarchH;
 
 class PomMeteor(BossModule module) : BossComponent(module)
 {

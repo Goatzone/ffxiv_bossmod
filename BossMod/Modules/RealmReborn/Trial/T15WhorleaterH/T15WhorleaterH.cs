@@ -1,12 +1,12 @@
-namespace BossMod.RealmReborn.Trial.T09WhorleaterH;
+namespace BossMod.RealmReborn.Trial.T15WhorleaterH;
 
 class GrandFall(BossModule module) : Components.StandardAOEs(module, AID.GrandFall, 8);
 class Hydroshot(BossModule module) : Components.PersistentVoidzoneAtCastTarget(module, 5, AID.Hydroshot, m => m.Enemies(OID.HydroshotZone).Where(z => z.EventState != 7), 0);
 class Dreadstorm(BossModule module) : Components.PersistentVoidzoneAtCastTarget(module, 5, AID.Dreadstorm, m => m.Enemies(OID.DreadstormZone).Where(z => z.EventState != 7), 0);
 
-class T09WhorleaterHStates : StateMachineBuilder
+class T15WhorleaterHStates : StateMachineBuilder
 {
-    public T09WhorleaterHStates(BossModule module) : base(module)
+    public T15WhorleaterHStates(BossModule module) : base(module)
     {
         TrivialPhase()
             .ActivateOnEnter<GrandFall>()
@@ -21,7 +21,7 @@ class T09WhorleaterHStates : StateMachineBuilder
 }
 
 [ModuleInfo(BossModuleInfo.Maturity.Contributed, Contributors = "taurenkey, Malediktus", GroupType = BossModuleInfo.GroupType.CFC, GroupID = 72, NameID = 2505)]
-public class T09WhorleaterH(WorldState ws, Actor primary) : BossModule(ws, primary, new(-0, 0), new ArenaBoundsRect(14.5f, 20))
+public class T15WhorleaterH(WorldState ws, Actor primary) : BossModule(ws, primary, new(-0, 0), new ArenaBoundsRect(14.5f, 20))
 {
     protected override void DrawEnemies(int pcSlot, Actor pc)
     {
